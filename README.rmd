@@ -1,0 +1,52 @@
+---
+title: "README- Run_Analysis.R - UCI HAR Dataset"
+author: "Alexandra Mackey"
+date: "22-Nov-2015"
+output:
+  html_document:
+    keep_md: yes
+---
+
+## Project Description
+This function cleans the UCI HAR Dataset into a usable form and calculates the mean for each variable. 
+
+##Study design and data processing
+
+###Collection of the raw data
+The data used is available at: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+It was collected by Smartlab - Non Linear Complex Systems Laboratory at DITEN - Universit‡ degli Studi di Genova.
+
+30 volunteers wore a Samsung Galaxy S II smartphone while performing 6 activities (walking, walking upstairs, walking downstairs, laying, sitting, and standing). The embedded accelerometer and gyroscope recorded velocity and acceleration information. 
+
+###Notes on the original (raw) data 
+The data was pre-preocessed with noise filters and sliding windows. The acceleration data was seperated into gravitational and body motion components.  The data is also split into two sections: training and test data. 
+
+##Creating the tidy datafile
+
+###Guide to create the tidy data file
+Prior to running the function:
+1. Download the data. 
+2. Unzip the data to a local folder. 
+3. Set the R working directory to the folder containing the unzipped UCI HAR Dataset folder. 
+4. Import the run_analysis script into R. 
+5. Run run_analysis().
+
+###Cleaning of the data -- What the code does
+Action taken in Run_Analysis.R:
+1. Load DPLYR Library
+2. Read all necessary tables into R. 
+3. Add column names to the tables.
+4. For the training and test data, seperately: merge the Subject ID (subject_train/test), Activity Number(y_train/test), and Meausrement (X_train/test) data together by binding the columns into a new table.
+5. Merge the training and test data into one table by binding the rows together. 
+6. Join the Activity Label data into the new table so each record has a descriptive label. 
+7. Clean up the column names for easier understanding. 
+8. Create a list of the variables that include measurements of mean or standard deviation. Add reference variables (Subject ID, Activity Number/Label) to the list. 
+9. Subest the data of intrest (means and standard deviations) along with the reference data. 
+10. Group the subset data by Subject ID and Activity Number. 11. Calculate the mean of each measured variable for each group and store in a new table. 
+12. Clean up the column names and column order in the new table.
+13. Export the table to a text file.
+
+##Sources
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+
